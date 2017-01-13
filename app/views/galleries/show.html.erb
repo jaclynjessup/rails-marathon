@@ -1,0 +1,23 @@
+<%= notice %>
+<h1> <%= @gallery.name %> </h1>
+
+<ul>
+  <li>City: <%= @gallery.city %></li>
+  <li>State: <%= @gallery.state %></li>
+  <li>Zip: <%= @gallery.zip %></li>
+  <% unless @gallery.description.nil? %>
+    <li>Description: <%= @gallery.description %></li>
+  <% end %>
+</ul>
+
+<h2> Paintings: </h2>
+
+<ul>
+  <% @paintings.each do |painting| %>
+    <li>
+      <%= painting.title %> By: <%= painting.artist %> , <%= painting.year %> <%= painting.created_at.strftime("%B %d %Y") %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Add a Painting', new_gallery_painting_path(@gallery) %>
